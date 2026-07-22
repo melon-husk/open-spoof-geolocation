@@ -14,17 +14,40 @@ Geolocation is built to be safe by design:
   API and never leaves your device.
 - **No network calls.** Zero outbound requests, no analytics endpoints.
 - **No location history.** Nothing is stored except the coordinates you set.
-- **Minimal permissions:** `storage` and `scripting`, plus the host access
-  required to apply the override on the sites you visit.
+- **Minimal permissions:** `storage` and `contextMenus`, plus the host access
+  required to run the override on the sites you visit.
 
 ## Features
 
-- Report a fixed latitude, longitude, and accuracy to any site that uses the
+- Reports custom latitude, longitude, and accuracy to any site that uses the
   Geolocation API
-- Global on/off toggle
+- Spoofs `getCurrentPosition`, `watchPosition`, and `permissions.query`
+- Works even when no location device is present — polyfills
+  `navigator.geolocation` when it is missing
+- Allow or disallow location access from the toolbar's right-click menu
+- Optional randomized jitter on each reading
+- Keeps your last 10 coordinates for quick reuse
+- Global on/off toggle with an ON/OFF badge on the toolbar icon
 - Light and dark themes that follow your system
 
-> Status: early scaffolding. The geolocation override is being built.
+## Usage
+
+1. Click the toolbar icon to open the popup. Enter the **latitude**,
+   **longitude**, and **accuracy** to report. Use
+   [latlong.net](https://www.latlong.net/) to look up coordinates.
+2. Toggle **Global** on. Sites that request your location now receive the
+   values you set.
+3. Use **Save location** to keep coordinates in the recent list, and click a
+   recent chip to switch back to it.
+4. **Right-click the toolbar icon** for quick controls: allow/disallow GEO
+   requests, reset the stored data, or open a test page.
+
+### Testing
+
+Open [webbrowsertools.com/geolocation](https://webbrowsertools.com/geolocation/)
+(also reachable via **Test GEO location** in the right-click menu) and confirm
+the reported location matches your settings. Toggle allow/disallow from the menu
+and reload to see access denied.
 
 ## Develop
 
