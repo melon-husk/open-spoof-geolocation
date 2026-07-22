@@ -5,6 +5,14 @@ export interface Coordinates {
   accuracy: number;
 }
 
+/** A user-named location, saved to the preset dropdown. */
+export interface SavedLocation {
+  id: string;
+  name: string;
+  latitude: number;
+  longitude: number;
+}
+
 export interface AppState {
   /** Master on/off for geolocation spoofing. */
   enabled: boolean;
@@ -16,6 +24,8 @@ export interface AppState {
   coords: Coordinates;
   /** Recently used coordinates, most-recent first (capped at 10). */
   history: Coordinates[];
+  /** User-saved named locations, shown in the preset dropdown. */
+  customPresets: SavedLocation[];
 }
 
 export const STORAGE_KEY = "state";
