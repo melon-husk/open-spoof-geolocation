@@ -34,5 +34,15 @@
     "semantic-release": "^24.2.9",
     "typescript": "^5.9.3",
     "wxt": "^0.20.27"
+  },
+  "pnpm": {
+    "overrides": {
+      "shell-quote": ">=1.9.0",
+      "tmp": ">=0.2.6",
+      "adm-zip": ">=0.6.0",
+      "fast-uri": ">=3.1.4",
+      "uuid": ">=11.1.1",
+      "esbuild": ">=0.28.1"
+    }
   }
 }
