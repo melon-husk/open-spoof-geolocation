@@ -21,6 +21,7 @@ Geolocation is built to be safe by design:
 
 - Reports custom latitude, longitude, and accuracy to any site that uses the
   Geolocation API
+- Pick from a list of preset city locations, or enter your own
 - Spoofs `getCurrentPosition`, `watchPosition`, and `permissions.query`
 - Works even when no location device is present — polyfills
   `navigator.geolocation` when it is missing

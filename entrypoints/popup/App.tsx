@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { AppState, Coordinates } from "@/lib/types";
 import { loadState, saveState } from "@/lib/storage";
 import { addToHistory } from "@/lib/geo";
+import { LOCATION_PRESETS, matchPresetName } from "@/lib/presets";
 
 function App() {
   const [state, setState] = useState<AppState | null>(null);
@@ -35,6 +36,17 @@ function App() {
     commit({ ...state!, coords });
   }
 
+  function selectPreset(name: string) {
+    const preset = LOCATION_PRESETS.find((p) => p.name === name);
+    if (!preset) return; // "Custom" — leave the current coordinates as-is.
+    // Keep the user's accuracy; only the position changes.
+    applyCoords({
+      latitude: preset.latitude,
+      longitude: preset.longitude,
+      accuracy: state!.coords.accuracy,
+    });
+  }
+
   return (
     <div className="app">
       <header className="topbar">
@@ -55,6 +67,24 @@ function App() {
         </div>
 
         <div className="fields">
+          <label className="field">
+            <span className="field-label">Preset location</span>
+            <select
+              className="preset"
+              value={matchPresetName(
+                state.coords.latitude,
+                state.coords.longitude,
+              )}
+              onChange={(e) => selectPreset(e.target.value)}
+            >
+              <option value="">Custom</option>
+              {LOCATION_PRESETS.map((p) => (
+                <option key={p.name} value={p.name}>
+                  {p.name}
+                </option>
+              ))}
+            </select>
+          </label>
           <label className="field">
             <span className="field-label">Latitude</span>
             <input
