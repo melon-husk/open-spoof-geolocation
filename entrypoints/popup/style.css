@@ -1,0 +1,283 @@
+:root {
+  /* Accent (blue) */
+  --purple: #3b82f6;
+  --purple-strong: #2563eb;
+  --purple-soft: #eff6ff;
+  --purple-line: #bfdbfe;
+  /* Saturated gradient — kept constant across themes so white text stays legible */
+  --grad: linear-gradient(135deg, #3b82f6, #2563eb);
+
+  /* Surfaces (slate) */
+  --page: #f8fafc;
+  --card: #ffffff;
+  --field: #f1f5f9;
+  --field-border: #e2e8f0;
+  --field-disabled: #eef2f7;
+  --border-subtle: #e8edf3;
+  --toggle-off: #cbd5e1;
+
+  /* Text (slate) */
+  --ink: #0f172a;
+  --muted: #64748b; /* slate-500, ~4.7:1 on --card, meets WCAG AA */
+  --placeholder: #94a3b8;
+  --disabled-text: #cbd5e1;
+
+  /* Status */
+  --danger: #dc2626;
+  --danger-soft: #fee2e2;
+
+  /* Effects */
+  --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.06);
+
+  /* Radius (tight two-step scale for a developer-tool feel) */
+  --r-control: 6px;
+  --r-surface: 8px;
+
+  /* Monospace for coordinate data */
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.4;
+  color-scheme: light dark;
+  color: var(--ink);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Visible keyboard focus on every interactive element (mouse clicks stay clean) */
+:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 2px;
+}
+
+body {
+  margin: 0;
+  width: 360px;
+  background: var(--page);
+}
+
+.app {
+  padding: 0 0 16px;
+}
+
+.loading {
+  padding: 32px;
+  text-align: center;
+  color: var(--muted);
+}
+
+/* ---- Top bar ---- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.brand-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--grad);
+  box-shadow: 0 0 0 3px var(--purple-soft);
+}
+
+.brand-name {
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.global {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.global-label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.toggle {
+  position: relative;
+  width: 58px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: var(--toggle-off);
+  cursor: pointer;
+  transition: background 0.18s ease;
+}
+
+.toggle.on {
+  background: var(--grad);
+}
+
+.knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: transform 0.18s ease;
+}
+
+.toggle.on .knob {
+  transform: translateX(30px);
+}
+
+.toggle-text {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #fff;
+}
+
+.toggle.on .toggle-text {
+  left: 10px;
+}
+
+.toggle:not(.on) .toggle-text {
+  right: 9px;
+  color: var(--muted);
+}
+
+/* ---- Card ---- */
+.card {
+  margin: 12px 10px;
+  padding: 12px;
+  background: var(--card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-surface);
+  box-shadow: var(--shadow-card);
+  transition: opacity 0.18s ease;
+}
+
+.card.paused {
+  opacity: 0.55;
+}
+
+.card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+/* ---- Fields ---- */
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+input[type="text"] {
+  padding: 9px 12px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--field);
+  border: 1px solid var(--field-border);
+  border-radius: var(--r-control);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+input[type="text"]::placeholder {
+  color: var(--placeholder);
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--purple);
+}
+
+input[type="text"]:disabled {
+  color: var(--disabled-text);
+  background: var(--field-disabled);
+}
+
+/* ---- Dark mode ---- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Accent (blue) — lift so accent text reads on dark surfaces */
+    --purple: #60a5fa;
+    --purple-strong: #93c5fd;
+    --purple-soft: #172033;
+    --purple-line: #2b3a52;
+
+    /* Surfaces (slate) */
+    --page: #0b0f17;
+    --card: #131924;
+    --field: #1a2130;
+    --field-border: #2a3444;
+    --field-disabled: #161c28;
+    --border-subtle: #222b38;
+    --toggle-off: #334155;
+
+    /* Text (slate) */
+    --ink: #f1f5f9;
+    --muted: #94a3b8; /* slate-400, AA on dark surfaces */
+    --placeholder: #64748b;
+    --disabled-text: #4b5563;
+
+    /* Status */
+    --danger: #f87171;
+    --danger-soft: #3a2020;
+
+    /* Effects */
+    --shadow-card: 0 10px 30px -12px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
