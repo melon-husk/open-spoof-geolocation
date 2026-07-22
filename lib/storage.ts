@@ -6,8 +6,12 @@ export function createId(): string {
 
 export function createDefaultState(): AppState {
   return {
-    enabled: false,
-    coords: { latitude: 0, longitude: 0, accuracy: 10 },
+    enabled: true,
+    allowGeo: true,
+    randomize: false,
+    // London (Trafalgar Square) — a sensible, recognizable default.
+    coords: { latitude: 51.507351, longitude: -0.127758, accuracy: 10 },
+    history: [],
   };
 }
 
