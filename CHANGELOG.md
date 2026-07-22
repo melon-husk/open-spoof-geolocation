@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/melon-husk/open-spoof-geolocation/compare/v1.2.0...v1.3.0) (2026-07-22)
+
+
+### Features
+
+* add location-pin extension icon ([d169f99](https://github.com/melon-husk/open-spoof-geolocation/commit/d169f9908c3f20318b4047bb09a657d3ce5d2de3))
+
 # [1.2.0](https://github.com/melon-husk/open-spoof-geolocation/compare/v1.1.0...v1.2.0) (2026-07-22)
 
 
