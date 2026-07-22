@@ -262,7 +262,25 @@ input[type="text"]:disabled {
   border-color: var(--purple);
 }
 
-/* ---- Save button ---- */
+/* ---- Remove-preset link ---- */
+.link-btn {
+  align-self: flex-start;
+  margin-top: 2px;
+  padding: 0;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--danger);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+}
+
+/* ---- Save / add-preset buttons ---- */
 .save-btn {
   margin-top: 12px;
   padding: 8px 14px;
@@ -279,9 +297,30 @@ input[type="text"]:disabled {
     border-color 0.15s ease;
 }
 
-.save-btn:hover {
+.save-btn:hover:not(:disabled) {
   background: var(--purple-soft);
   border-color: var(--purple);
+}
+
+.save-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.add-preset {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.add-preset .preset-name {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.add-preset .save-btn {
+  margin-top: 0;
+  white-space: nowrap;
 }
 
 /* ---- History ---- */

@@ -12,13 +12,17 @@ export function createDefaultState(): AppState {
     // London (Trafalgar Square) — a sensible, recognizable default.
     coords: { latitude: 51.507351, longitude: -0.127758, accuracy: 10 },
     history: [],
+    customPresets: [],
   };
 }
 
 export async function loadState(): Promise<AppState> {
   const stored = await browser.storage.local.get(STORAGE_KEY);
-  const state = stored[STORAGE_KEY] as AppState | undefined;
-  return state ?? createDefaultState();
+  const state = stored[STORAGE_KEY] as Partial<AppState> | undefined;
+  if (!state) return createDefaultState();
+  // Merge over defaults so state saved by an older version still gains any
+  // fields added since (e.g. customPresets).
+  return { ...createDefaultState(), ...state };
 }
 
 export async function saveState(state: AppState): Promise<void> {
