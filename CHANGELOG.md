@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/melon-husk/open-spoof-geolocation/compare/v1.1.0...v1.2.0) (2026-07-22)
+
+
+### Features
+
+* let users save custom named location presets ([b485897](https://github.com/melon-husk/open-spoof-geolocation/commit/b485897546e3d993a90d150c0b924fe4e5d0018c))
+
 # [1.1.0](https://github.com/melon-husk/open-spoof-geolocation/compare/v1.0.0...v1.1.0) (2026-07-22)
 
 
