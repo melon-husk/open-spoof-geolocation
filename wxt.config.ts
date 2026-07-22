@@ -7,12 +7,12 @@ export default defineConfig({
     name: "Open Spoof Geolocation",
     description:
       "Open source tool to spoof your browser's geolocation. No tracking, no telemetry.",
-    // storage persists your spoofed location locally. scripting is used to
-    // inject the override into pages that call the Geolocation API.
-    permissions: ["storage", "scripting"],
-    // Required so the geolocation override can be injected on any site you
-    // visit. Used ONLY to apply your spoofed location — never to read or
-    // exfiltrate browsing data.
+    // storage persists your spoofed location locally. contextMenus adds the
+    // right-click controls on the toolbar icon (allow/disallow, reset, test).
+    permissions: ["storage", "contextMenus"],
+    // Required so the geolocation override (a content script) can run on any
+    // site you visit. Used ONLY to apply your spoofed location — never to read
+    // or exfiltrate browsing data.
     host_permissions: ["<all_urls>"],
   },
 });
