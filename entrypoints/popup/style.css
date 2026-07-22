@@ -243,6 +243,25 @@ input[type="text"]:disabled {
   background: var(--field-disabled);
 }
 
+/* ---- Preset select ---- */
+.preset {
+  width: 100%;
+  padding: 9px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--field);
+  border: 1px solid var(--field-border);
+  border-radius: var(--r-control);
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+
+.preset:focus {
+  outline: none;
+  border-color: var(--purple);
+}
+
 /* ---- Save button ---- */
 .save-btn {
   margin-top: 12px;
